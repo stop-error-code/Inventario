@@ -1,0 +1,45 @@
+POST http://localhost:3000/server HTTP/1.1
+content-type: application/json
+
+{
+    "serverId": "2",
+    "serverName": "Pepito",
+    "componentId":"1",
+    "IP":"192.168.1.22",
+    "hostName":"ASSA"
+}
+
+POST http://localhost:3000/application HTTP/1.1
+content-type: application/json
+
+{
+    "applicationId": "2",
+    "expositionId": "1",
+    "applicationDescription":"cagada",
+    "applicationName":"newton"
+}
+
+POST http://localhost:3000/exposition HTTP/1.1
+content-type: application/json
+
+{
+    "expositionId":"1",
+    "expositionName":"Publica"
+}
+
+POST http://localhost:3000/component_type HTTP/1.1
+content-type: application/json
+
+{
+    "componentTypeId":"1",
+    "componentTypeName":"Front-End"
+}
+
+POST http://localhost:3000/application/2/component HTTP/1.1
+content-type: application/json
+
+{
+    "componentTypeId":"1",
+    "componentId":"1",
+    "componentName":"Front end"
+}

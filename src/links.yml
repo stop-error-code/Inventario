@@ -1,0 +1,5 @@
+/inventory/application:
+  GET:
+    - rel: components
+      method: GET
+      href: /inventory/application/:1/components/
