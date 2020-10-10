@@ -15,10 +15,28 @@ var opts = {
       freezeTableName: true
   }
 }
+//Connecting to database
+console.log("Conecting to the database");
 const sequelize  = new Sequelize(process.env.DATABASE,process.env.DATABASE_USER,process.env.DATABASE_PASSWORD, {
   host: process.env.DATABASE_HOST,
   dialect: 'postgres'
 },opts)
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+  sequelize.sync({force: (process.env.DATABASE_SYNC=="true")})
+  .then(() => {
+
+    console.log(`+++++++++++++++++++++++++++++++`);
+    console.log(` Database & tables created!`);
+    console.log(`+++++++++++++++++++++++++++++++`)
+  })
 
 const Server= serverModel(sequelize,Sequelize)
 const Application= applicationModel(sequelize,Sequelize)

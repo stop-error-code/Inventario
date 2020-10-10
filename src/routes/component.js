@@ -2,6 +2,7 @@ import { Router } from 'express';
 const router = Router();
 const {Component}=require('../models');
 
+//components by appid
 router.get('/:appId/component', (req, res) => {
   console.log(req.params.appId),
   Component.findAll({
@@ -9,7 +10,7 @@ router.get('/:appId/component', (req, res) => {
       application_id:req.params.appId}}
       ).then(component=>res.json(component))
 });
-
+//New componet for application
 router.post('/:appId/component/', (req, res) => {
    Component.create({
      id:req.body.componentId,

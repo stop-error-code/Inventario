@@ -13,6 +13,8 @@ const router = Router();
     applicationStatusId: '1',
     },
   };*/
+
+  //application by id, if is empty get all apps
 router.get('/:appId',  (req, res) => {
   console.log(req.params)
   if (req.params.appId){
@@ -21,6 +23,7 @@ router.get('/:appId',  (req, res) => {
     Application.findAll({include:[Exposition]}).then(application=>res.json(application))
   }
 });
+//new applaicton
 router.post('/',  (req, res) => {
   const application = Application.create({ 
       id: req.body.applicationId,
